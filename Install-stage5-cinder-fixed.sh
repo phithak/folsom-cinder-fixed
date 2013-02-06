@@ -91,6 +91,12 @@ vgdisplay cinder-volumes
 sleep 2
 
 sed -i "s/^exit 0/losetup \/dev\/loop2 \/home\/cinder\/cinder-volumes/g" /etc/rc.local
+echo "sleep 5" >> /etc/rc.local
+echo "service tgt restart" >> /etc/rc.local
+echo "sleep 5" >> /etc/rc.local
+echo "service cinder-volume restart" >> /etc/rc.local
+echo "service cinder-api restart" >> /etc/rc.local
+echo "service cinder-scheduler restart" >> /etc/rc.local
 echo "exit 0" >> /etc/rc.local
 mv /etc/tgt/conf.d/nova_tgt.conf /etc/tgt/conf.d/nova_tgt.conf.bak
 sed -i "s/*.conf/cinder_tgt.conf/1g" /etc/tgt/targets.conf
