@@ -64,8 +64,6 @@ cinder-manage db sync
 # This section is modified by Phithak Thaenkaew
 apt-get -y purge iscsitarget iscsitarget-dkms
 apt-get -y autoremove
-sed -i 's/false/true/g' /etc/default/iscsitarget
-service iscsitarget restart
 service open-iscsi restart
 
 mkdir /home/cinder
